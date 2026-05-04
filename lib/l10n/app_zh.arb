@@ -1,0 +1,25 @@
+{
+  "@@locale": "zh",
+  "appTitle": "Digiran",
+  "noInternet": "无网络连接",
+  "hello": "你好",
+  "nextLevelLogin": "下一步",
+  "receiveCodeRetry": "重新发送验证码",
+  "tryReceiveCodeRetry": "请重试获取验证码",
+  "invalidNumber": "号码无效",
+  "requiredNumber": "请输入号码",
+  "mobileNumber": "手机号码",
+  "loginSignup": "登录 | 注册",
+  "pleaseFillInputNumber": "请输入您的手机号码",
+  "selectLanguage": "选择语言",
+  "cancel": "取消",
+  "ok": "确认",
+  "enterVerificationCode": "请输入验证码",
+  "enterOtp": "请输入发送到“{mobile}”的6位验证码。",
+  "@enterOtp": {
+    "placeholders": {
+      "mobile": {}
+    }
+  },
+  "login": "登录"
+}

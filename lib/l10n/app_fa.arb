@@ -1,0 +1,25 @@
+{
+  "@@locale": "fa",
+  "appTitle": "دیجیران",
+  "noInternet": "اینترنت شما قطع است",
+  "hello": "سلام",
+  "nextLevelLogin": "مرحله بعد",
+  "receiveCodeRetry": "دریافت مجدد کد تایید",
+  "tryReceiveCodeRetry": "برای دریافت کد تایید مجدد تلاش کنید",
+  "invalidNumber": "شماره معتبر نیست",
+  "requiredNumber": "شماره را وارد کنید",
+  "mobileNumber": "شماره موبایل",
+  "loginSignup": "ورود | ثبت نام",
+  "pleaseFillInputNumber": "لطفا شماره موبایل خود را وارد کنید",
+  "selectLanguage": "انتخاب زبان",
+  "cancel": "انصراف",
+  "ok": "تایید",
+  "enterVerificationCode": "کد تایید را وارد کنید",
+  "enterOtp": "کد شش رقمی پیامک شده به \"{mobile}\" را وارد کنید.",
+  "@enterOtp": {
+    "placeholders": {
+      "mobile": {}
+    }
+  },
+  "login": "ورود"
+}

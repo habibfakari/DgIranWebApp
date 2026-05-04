@@ -1,0 +1,25 @@
+{
+  "@@locale": "en",
+  "appTitle": "Digiran",
+  "noInternet": "No internet connection",
+  "hello": "Hello",
+  "nextLevelLogin": "Next Step",
+  "receiveCodeRetry": "Resend verification code",
+  "tryReceiveCodeRetry": "Try again to receive the verification code",
+  "invalidNumber": "Invalid number",
+  "requiredNumber": "Please enter your number",
+  "mobileNumber": "Mobile number",
+  "loginSignup": "Login | Sign up",
+  "pleaseFillInputNumber": "Please enter your mobile number",
+  "selectLanguage": "Select Language",
+  "cancel": "Cancel",
+  "ok": "OK",
+  "enterVerificationCode": "Enter the verification code",
+  "enterOtp": "Enter the 6-digit code sent to \"{mobile}\".",
+  "@enterOtp": {
+    "placeholders": {
+      "mobile": {}
+    }
+  },
+  "login": "Login"
+}

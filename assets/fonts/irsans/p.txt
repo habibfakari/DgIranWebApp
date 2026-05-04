@@ -1,0 +1,12 @@
+  fonts:
+   - family: irsans
+     fonts:
+       - asset: assets/fonts/IRANSansMobile(FaNum).ttf
+       - asset: assets/fonts/IRANSansMobile(FaNum)_UltraLight.ttf
+         weight: 100
+       - asset: assets/fonts/IRANSansMobile(FaNum)_Light.ttf
+         weight: 300
+       - asset: assets/fonts/IRANSansMobile(FaNum)_Medium.ttf
+         weight: 500
+       - asset: assets/fonts/IRANSansMobile(FaNum)_Bold.ttf
+         weight: 700

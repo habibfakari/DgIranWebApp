@@ -1,0 +1,25 @@
+{
+  "@@locale": "ru",
+  "appTitle": "Digiran",
+  "noInternet": "Нет подключения к интернету",
+  "hello": "Здравствуйте",
+  "nextLevelLogin": "Следующий шаг",
+  "receiveCodeRetry": "Повторно отправить код",
+  "tryReceiveCodeRetry": "Попробуйте снова получить код",
+  "invalidNumber": "Неверный номер",
+  "requiredNumber": "Введите номер",
+  "mobileNumber": "Номер телефона",
+  "loginSignup": "Вход | Регистрация",
+  "pleaseFillInputNumber": "Пожалуйста, введите номер телефона",
+  "selectLanguage": "Выбор языка",
+  "cancel": "Отмена",
+  "ok": "ОК",
+  "enterVerificationCode": "Введите код подтверждения",
+  "enterOtp": "Введите 6-значный код, отправленный на \"{mobile}\".",
+  "@enterOtp": {
+    "placeholders": {
+      "mobile": {}
+    }
+  },
+  "login": "Войти"
+}

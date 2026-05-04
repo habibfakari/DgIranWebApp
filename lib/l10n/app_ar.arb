@@ -1,0 +1,25 @@
+{
+  "@@locale": "ar",
+  "appTitle": "ديجيران",
+  "noInternet": "لا يوجد اتصال بالإنترنت",
+  "hello": "مرحبا",
+  "nextLevelLogin": "الخطوة التالية",
+  "receiveCodeRetry": "إعادة إرسال رمز التحقق",
+  "tryReceiveCodeRetry": "حاول مرة أخرى للحصول على رمز التحقق",
+  "invalidNumber": "رقم غير صالح",
+  "requiredNumber": "يرجى إدخال الرقم",
+  "mobileNumber": "رقم الجوال",
+  "loginSignup": "تسجيل الدخول | إنشاء حساب",
+  "pleaseFillInputNumber": "يرجى إدخال رقم الجوال",
+  "selectLanguage": "اختيار اللغة",
+  "cancel": "إلغاء",
+  "ok": "تأكيد",
+  "enterVerificationCode": "أدخل رمز التحقق",
+  "enterOtp": "أدخل رمز التحقق المكون من 6 أرقام المرسل إلى \"{mobile}\".",
+  "@enterOtp": {
+    "placeholders": {
+      "mobile": {}
+    }
+  },
+  "login": "تسجيل الدخول"
+}

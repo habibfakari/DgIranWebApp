@@ -1,0 +1,25 @@
+{
+  "@@locale": "tr",
+  "appTitle": "Digiran",
+  "noInternet": "İnternet bağlantısı yok",
+  "hello": "Merhaba",
+  "nextLevelLogin": "Sonraki Adım",
+  "receiveCodeRetry": "Doğrulama kodunu yeniden gönder",
+  "tryReceiveCodeRetry": "Doğrulama kodunu almak için tekrar deneyin",
+  "invalidNumber": "Geçersiz numara",
+  "requiredNumber": "Lütfen numarayı girin",
+  "mobileNumber": "Telefon numarası",
+  "loginSignup": "Giriş | Kayıt ol",
+  "pleaseFillInputNumber": "Lütfen telefon numaranızı girin",
+  "selectLanguage": "Dil seçimi",
+  "cancel": "İptal",
+  "ok": "Tamam",
+  "enterVerificationCode": "Doğrulama kodunu girin",
+  "enterOtp": "\"{mobile}\" numarasına gönderilen 6 haneli kodu girin.",
+  "@enterOtp": {
+    "placeholders": {
+      "mobile": {}
+    }
+  },
+  "login": "Giriş"
+}
