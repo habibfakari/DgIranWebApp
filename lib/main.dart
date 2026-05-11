@@ -35,6 +35,14 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Conf.backColor,
     statusBarColor: Conf.backColor,
+    /// ✅ آیکون‌های status bar روشن
+    statusBarIconBrightness: Brightness.light,
+
+/*    /// ✅ آیکون‌های navigation bar روشن
+    systemNavigationBarIconBrightness: Brightness.light,
+
+    /// iOS
+    statusBarBrightness: Brightness.dark,*/
   ));
 
   HttpOverrides.global = MyHttpOverrides();

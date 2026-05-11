@@ -21,5 +21,9 @@
       "mobile": {}
     }
   },
-  "login": "Login"
+  "login": "Login",
+    "exit": "Exit",
+    "exitAppQuestion": "Do you want to exit the application?",
+    "yes": "Yes",
+    "no": "No"
 }

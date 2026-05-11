@@ -60,4 +60,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get login => 'Войти';
+
+  @override
+  String get exit => 'Выход';
+
+  @override
+  String get exitAppQuestion => 'Вы хотите выйти из приложения?';
+
+  @override
+  String get yes => 'Да';
+
+  @override
+  String get no => 'Нет';
 }

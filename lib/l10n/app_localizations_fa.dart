@@ -60,4 +60,16 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get login => 'ورود';
+
+  @override
+  String get exit => 'خروج';
+
+  @override
+  String get exitAppQuestion => 'آیا می‌خواهید از برنامه خارج شوید؟';
+
+  @override
+  String get yes => 'بله';
+
+  @override
+  String get no => 'خیر';
 }

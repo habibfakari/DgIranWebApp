@@ -60,4 +60,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get login => '登录';
+
+  @override
+  String get exit => '退出';
+
+  @override
+  String get exitAppQuestion => '您要退出应用程序吗？';
+
+  @override
+  String get yes => '是';
+
+  @override
+  String get no => '否';
 }

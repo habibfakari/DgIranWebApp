@@ -61,4 +61,16 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get login => 'Giriş';
+
+  @override
+  String get exit => 'Çıkış';
+
+  @override
+  String get exitAppQuestion => 'Uygulamadan çıkmak istiyor musunuz?';
+
+  @override
+  String get yes => 'Evet';
+
+  @override
+  String get no => 'Hayır';
 }

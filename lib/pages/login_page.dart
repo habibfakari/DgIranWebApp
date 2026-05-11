@@ -158,10 +158,10 @@ class _LoginPageState extends State<LoginPage> {
                                     Align(
                                       alignment: AlignmentGeometry.center,
                                       child: Padding(
-                                        padding: EdgeInsets.only(top: Conf.xxlSize, bottom: Conf.xlSize),
+                                        padding: EdgeInsets.only(top: Conf.xlSize, bottom: Conf.xlSize),
                                         child: FittedBox(
                                           fit: BoxFit.cover,
-                                          child: Image.asset('assets/img/logo_android12.png', fit: BoxFit.cover, width: 30.w),
+                                          child: Image.asset('assets/img/logo.png', fit: BoxFit.cover, width: 20.w),
                                         ),
                                       ),
                                     ),

@@ -60,4 +60,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get login => 'تسجيل الدخول';
+
+  @override
+  String get exit => 'خروج';
+
+  @override
+  String get exitAppQuestion => 'هل تريد الخروج من التطبيق؟';
+
+  @override
+  String get yes => 'نعم';
+
+  @override
+  String get no => 'لا';
 }

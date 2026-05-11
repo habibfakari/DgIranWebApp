@@ -40,36 +40,34 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // یا Conf.backColor
-      body: SafeArea(
-        child: Column(
-          children: [
-            /// فضای بالا
-            const Spacer(),
-
-            /// لوگو
-            Center(
-              child: Image.asset(
-                'assets/img/logo_android12.png',
-                width: 200,
-              ),
+      body: Stack(
+        children: [
+          /// 🔥 بک‌گراند تمام صفحه
+          Positioned.fill(
+            child: Image.asset(
+              'assets/img/splash.jpg', // 👈 تصویر فول
+              fit: BoxFit.cover,
             ),
+          ),
 
-            const Spacer(),
-
-            /// نسخه اپ
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: Text(
-                version,
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey,
+          /// 🔽 ورژن پایین صفحه
+          Positioned(
+            bottom: 16,
+            left: 0,
+            right: 0,
+            child: SafeArea(
+              child: Center(
+                child: Text(
+                  version,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: Colors.white, // 👈 روی عکس بهتر دیده بشه
+                  ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

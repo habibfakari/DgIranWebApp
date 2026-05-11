@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/auth_bloc.dart';
+import '../l10n/app_localizations.dart';
 import '../pages/login_page.dart';
+import '../utility/htify.dart';
 
 class WebAppPage extends StatefulWidget {
   const WebAppPage({super.key});
@@ -50,59 +53,113 @@ class _WebAppPageState extends State<WebAppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: InAppWebView(
-          initialUrlRequest: URLRequest(
-            url: WebUri(baseUrl),
-          ),
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop,res) async {
+        if (didPop) return;
 
-          pullToRefreshController: pullToRefreshController,
+        final canGoBack = await controller?.canGoBack() ?? false;
 
-          // ✅ مهم برای ارتباط با Flutter
-          onWebViewCreated: (webController) {
-            controller = webController;
+        if (canGoBack) {
+          controller?.goBack();
+        } else {
+          final exit = await showDialog<bool>(
+            context: context,
+            builder: (_) => AlertDialog(
+              title:  Text(AppLocalizations.of(context)!.exit),
+              content:  Text(AppLocalizations.of(context)!.exitAppQuestion),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context, false),
+                  child:  Text(AppLocalizations.of(context)!.no),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pop(context, true),
+                  child:  Text(AppLocalizations.of(context)!.yes),
+                ),
+              ],
+            ),
+          );
 
-            /// ✅ handler برای login مستقیم
-            controller?.addJavaScriptHandler(
-              handlerName: 'loginRequired',
-              callback: (args) {
-                _goToLogin();
-              },
-            );
+          if (exit == true) {
+            SystemNavigator.pop();
+          }
+        }
+      },
+      child: Scaffold(
+        body: SafeArea(
+          child: InAppWebView(
+            initialUrlRequest: URLRequest(
+              url: WebUri(baseUrl),
+            ),
 
-            /// ✅ handler برای تغییر URL در SPA
-            controller?.addJavaScriptHandler(
-              handlerName: 'urlChanged',
-              callback: (args) {
-                final path = args.first;
+            pullToRefreshController: pullToRefreshController,
 
-                // print("URL Changed => $path");
+            // ✅ مهم برای ارتباط با Flutter
+            onWebViewCreated: (webController) {
+              controller = webController;
 
-                if (authRoutes.contains(path)) {
+              /// ✅ handler برای login مستقیم
+              controller?.addJavaScriptHandler(
+                handlerName: 'loginRequired',
+                callback: (args) {
                   _goToLogin();
-                }
-              },
-            );
+                },
+              );
 
-          },
+              /// ✅ handler برای تغییر URL در SPA
+              controller?.addJavaScriptHandler(
+                handlerName: 'urlChanged',
+                callback: (args) {
+                  final path = args.first;
 
-          initialSettings: InAppWebViewSettings(
-            transparentBackground: true,
-          ),
-          // /// ✅ لودینگ
-          // onLoadStart: (controller, url) {
-          //   final path = url?.path ?? '';
-          //
-          //   if (authRoutes.contains(path)) {
-          //     controller.stopLoading();
-          //     _goToLogin();
-          //   }
-          // },
+                  // print("URL Changed => $path");
 
-          onLoadStop: (controller, url) async {
-            pullToRefreshController?.endRefreshing();
-            await controller.evaluateJavascript(source: """
+                  if (authRoutes.contains(path)) {
+                    _goToLogin();
+                  }
+                },
+              );
+
+
+              /// 🔥 logout handler
+              controller?.addJavaScriptHandler(
+                handlerName: 'logout',
+                callback: (args) async {
+                  print("🚪 Logout called from Web");
+
+                  await CookieManager.instance().deleteAllCookies();
+
+                  /// (اختیاری) پاک کردن توکن خودت
+                  await TokenManager.clear();
+
+                  /// 👇 برو صفحه اصلی
+                  controller?.loadUrl(
+                    urlRequest: URLRequest(
+                      url: WebUri("https://digiran.io"),
+                    ),
+                  );
+                },
+              );
+
+            },
+
+            initialSettings: InAppWebViewSettings(
+              transparentBackground: true,
+            ),
+            // /// ✅ لودینگ
+            // onLoadStart: (controller, url) {
+            //   final path = url?.path ?? '';
+            //
+            //   if (authRoutes.contains(path)) {
+            //     controller.stopLoading();
+            //     _goToLogin();
+            //   }
+            // },
+
+            onLoadStop: (controller, url) async {
+              pullToRefreshController?.endRefreshing();
+              await controller.evaluateJavascript(source: """
     (function() {
       function notifyFlutter() {
         if (window.flutter_inappwebview) {
@@ -119,30 +176,31 @@ class _WebAppPageState extends State<WebAppPage> {
       window.addEventListener('popstate', notifyFlutter);
     })();
   """);
-          },
+            },
 
-          /// ✅ intercept url
-          shouldOverrideUrlLoading: (controller, action) async {
-            final uri = action.request.url;
+            /// ✅ intercept url
+            shouldOverrideUrlLoading: (controller, action) async {
+              final uri = action.request.url;
 
-            if (uri != null) {
-              final path = uri.path;
+              if (uri != null) {
+                final path = uri.path;
 
-              if (authRoutes.contains(path)) {
-                await _goToLogin();
+                if (authRoutes.contains(path)) {
+                  await _goToLogin();
 
-                return NavigationActionPolicy.CANCEL;
+                  return NavigationActionPolicy.CANCEL;
+                }
               }
-            }
 
-            return NavigationActionPolicy.ALLOW;
-          },
+              return NavigationActionPolicy.ALLOW;
+            },
 
-          onReceivedError:( controller,request, error){
-            pullToRefreshController?.endRefreshing();
-            // _showError(error.description);
-          } ,
+            onReceivedError:( controller,request, error){
+              pullToRefreshController?.endRefreshing();
+              // _showError(error.description);
+            } ,
 
+          ),
         ),
       ),
     );
