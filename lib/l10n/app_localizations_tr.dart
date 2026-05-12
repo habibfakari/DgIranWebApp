@@ -73,4 +73,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get no => 'Hayır';
+
+  @override
+  String get editMobileNumber => 'Telefon Numarasını Düzenle';
 }

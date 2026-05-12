@@ -534,7 +534,7 @@ class _LoginPageState extends State<LoginPage> {
                                                 Icon(FeatherIcons.edit, color: Conf.primaryColor),
                                                 Padding(
                                                   padding: EdgeInsets.only(right: Conf.xlSize),
-                                                  child: Text('ویرایش شماره موبایل').pColor,
+                                                  child: Text(AppLocalizations.of(context)!.editMobileNumber).pColor,
                                                 ),
                                               ],
                                             ),

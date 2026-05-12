@@ -231,6 +231,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No'**
   String get no;
+
+  /// No description provided for @editMobileNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Mobile Number'**
+  String get editMobileNumber;
 }
 
 class _AppLocalizationsDelegate

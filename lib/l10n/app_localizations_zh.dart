@@ -72,4 +72,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get no => '否';
+
+  @override
+  String get editMobileNumber => '编辑手机号';
 }

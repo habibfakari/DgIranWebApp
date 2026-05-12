@@ -72,4 +72,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get no => 'Нет';
+
+  @override
+  String get editMobileNumber => 'Изменить номер телефона';
 }

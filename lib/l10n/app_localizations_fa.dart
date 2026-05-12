@@ -72,4 +72,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get no => 'خیر';
+
+  @override
+  String get editMobileNumber => 'ویرایش شماره موبایل';
 }

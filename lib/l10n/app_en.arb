@@ -25,5 +25,6 @@
     "exit": "Exit",
     "exitAppQuestion": "Do you want to exit the application?",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+     "editMobileNumber": "Edit Mobile Number"
 }

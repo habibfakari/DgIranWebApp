@@ -25,5 +25,6 @@
     "exit": "Çıkış",
     "exitAppQuestion": "Uygulamadan çıkmak istiyor musunuz?",
     "yes": "Evet",
-    "no": "Hayır"
+    "no": "Hayır",
+    "editMobileNumber": "Telefon Numarasını Düzenle"
 }

@@ -72,4 +72,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get no => 'لا';
+
+  @override
+  String get editMobileNumber => 'تعديل رقم الهاتف';
 }

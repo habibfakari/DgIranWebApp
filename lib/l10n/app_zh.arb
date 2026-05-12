@@ -25,5 +25,6 @@
     "exit": "退出",
     "exitAppQuestion": "您要退出应用程序吗？",
     "yes": "是",
-    "no": "否"
+    "no": "否",
+    "editMobileNumber": "编辑手机号"
 }
