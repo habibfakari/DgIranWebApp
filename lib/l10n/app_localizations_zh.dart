@@ -75,4 +75,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get editMobileNumber => '编辑手机号';
+
+  @override
+  String get unexpectedError => '发生未知错误';
 }

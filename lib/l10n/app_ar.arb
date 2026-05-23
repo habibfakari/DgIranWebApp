@@ -26,5 +26,6 @@
     "exitAppQuestion": "هل تريد الخروج من التطبيق؟",
     "yes": "نعم",
     "no": "لا",
-     "editMobileNumber": "تعديل رقم الهاتف"
+     "editMobileNumber": "تعديل رقم الهاتف",
+       "unexpectedError":"حدث خطأ غير متوقع"
 }

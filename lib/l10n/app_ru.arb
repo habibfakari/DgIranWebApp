@@ -26,5 +26,6 @@
     "exitAppQuestion": "Вы хотите выйти из приложения?",
     "yes": "Да",
     "no": "Нет",
-    "editMobileNumber": "Изменить номер телефона"
+    "editMobileNumber": "Изменить номер телефона",
+          "unexpectedError":"Произошла непредвиденная ошибка"
 }

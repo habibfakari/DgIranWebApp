@@ -237,6 +237,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Edit Mobile Number'**
   String get editMobileNumber;
+
+  /// No description provided for @unexpectedError.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred'**
+  String get unexpectedError;
 }
 
 class _AppLocalizationsDelegate

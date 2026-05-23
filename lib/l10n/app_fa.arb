@@ -26,5 +26,6 @@
     "exitAppQuestion": "آیا می‌خواهید از برنامه خارج شوید؟",
     "yes": "بله",
     "no": "خیر",
-    "editMobileNumber": "ویرایش شماره موبایل"
+    "editMobileNumber": "ویرایش شماره موبایل",
+     "unexpectedError":"خطای غیرمنتظره رخ داد"
 }

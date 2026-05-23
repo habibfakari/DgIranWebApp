@@ -76,4 +76,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get editMobileNumber => 'Edit Mobile Number';
+
+  @override
+  String get unexpectedError => 'An unexpected error occurred';
 }

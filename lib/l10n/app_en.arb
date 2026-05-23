@@ -26,5 +26,6 @@
     "exitAppQuestion": "Do you want to exit the application?",
     "yes": "Yes",
     "no": "No",
-     "editMobileNumber": "Edit Mobile Number"
+     "editMobileNumber": "Edit Mobile Number",
+     "unexpectedError":"An unexpected error occurred"
 }

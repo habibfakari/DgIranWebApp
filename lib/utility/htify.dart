@@ -15,7 +15,25 @@ class ApiClient {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     },
-  ));
+  )){
+
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+
+          final prefs = await SharedPreferences.getInstance();
+          final token = prefs.getString('token');
+
+          if (token != null && token.isNotEmpty) {
+            options.headers['Authorization'] =
+            'Bearer $token';
+          }
+
+          return handler.next(options);
+        },
+      ),
+    );
+  }
 
   void setToken(String? token) {
     if (token != null) {

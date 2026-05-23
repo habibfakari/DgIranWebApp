@@ -31,8 +31,9 @@ class AuthCubit extends Cubit<AuthState> {
   void _mapError(Object e) {
     if (e is NetworkException) {
       errorCubit.show(AppError(e.message.toString()));
+      return;
     }
-    errorCubit.show(AppError('خطای غیرمنتظره رخ داد'));
+    errorCubit.show(AppError('unexpectedError'));
   }
 
   // ---------------- LOGIN ----------------

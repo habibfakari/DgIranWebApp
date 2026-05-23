@@ -146,6 +146,16 @@ class _WebAppPageState extends State<WebAppPage> {
 
             initialSettings: InAppWebViewSettings(
               transparentBackground: true,
+              supportZoom: false,
+              builtInZoomControls: false,
+              displayZoomControls: false,
+              useWideViewPort: true,
+              loadWithOverviewMode: true,
+              javaScriptCanOpenWindowsAutomatically: false,
+              mediaPlaybackRequiresUserGesture: false,
+              disableContextMenu: true,
+              allowsInlineMediaPlayback: true,
+              useShouldOverrideUrlLoading: true,
             ),
             // /// ✅ لودینگ
             // onLoadStart: (controller, url) {

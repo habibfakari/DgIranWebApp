@@ -76,4 +76,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get editMobileNumber => 'Telefon Numarasını Düzenle';
+
+  @override
+  String get unexpectedError => 'Beklenmeyen bir hata oluştu';
 }

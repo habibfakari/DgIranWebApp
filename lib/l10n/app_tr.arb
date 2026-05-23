@@ -26,5 +26,6 @@
     "exitAppQuestion": "Uygulamadan çıkmak istiyor musunuz?",
     "yes": "Evet",
     "no": "Hayır",
-    "editMobileNumber": "Telefon Numarasını Düzenle"
+    "editMobileNumber": "Telefon Numarasını Düzenle",
+    "unexpectedError":"Beklenmeyen bir hata oluştu"
 }

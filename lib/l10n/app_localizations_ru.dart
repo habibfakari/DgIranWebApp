@@ -75,4 +75,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get editMobileNumber => 'Изменить номер телефона';
+
+  @override
+  String get unexpectedError => 'Произошла непредвиденная ошибка';
 }

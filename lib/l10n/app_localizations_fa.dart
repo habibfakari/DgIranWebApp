@@ -75,4 +75,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get editMobileNumber => 'ویرایش شماره موبایل';
+
+  @override
+  String get unexpectedError => 'خطای غیرمنتظره رخ داد';
 }
