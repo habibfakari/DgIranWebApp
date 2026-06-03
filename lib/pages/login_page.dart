@@ -1,4 +1,6 @@
 // import 'package:firebase_messaging/firebase_messaging.dart';
+import 'dart:io';
+
 import 'package:digiran/blocs/use_extention_blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -68,8 +70,20 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   String? appSignature;
-  getSignCode() async {
-     appSignature = await SmsAutoFill().getAppSignature;
+  Future<void> getSignCode() async {
+    if (Platform.isAndroid) {
+      // فقط برای اندروید
+      try {
+        appSignature = await SmsAutoFill().getAppSignature;
+        print('App Signature (Android): $appSignature');
+      } catch (e) {
+        print('Error getting signature: $e');
+      }
+    } else if (Platform.isIOS) {
+      // در iOS نیازی به signature نیست
+      print('iOS: No app signature needed');
+      appSignature = 'FA+9qCX9VSu'; // یا هر مقدار پیش‌فرض
+    }
   }
 
   void listenOtp() async {
@@ -83,6 +97,27 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   final FocusNode _phoneFocus = FocusNode();
+
+  // در بالای فایل، بعد از importها
+  String sanitizePhoneNumberForIran(String rawInput) {
+    // جداول تبدیل اعداد فارسی و عربی به انگلیسی
+    const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    const englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    String result = rawInput;
+
+    // تبدیل هر رقم فارسی یا عربی به انگلیسی
+    for (int i = 0; i < 10; i++) {
+      result = result
+          .replaceAll(persianNumbers[i], englishNumbers[i])
+          .replaceAll(arabicNumbers[i], englishNumbers[i]);
+    }
+
+    // هیچ کاراکتر دیگری حذف نمی‌شود
+    // + و - و فاصله و ... سر جای خودشان می‌مانند
+    return result;
+  }
 
   @override
   void initState() {
@@ -207,19 +242,34 @@ class _LoginPageState extends State<LoginPage> {
                                                               decoration: Conf.iDeco.copyWith(filled: true),
                                                               initialCountryCode: 'IR',
                                                               onChanged: (phone) {
-                                                                // print(phone.completeNumber);
-                                                                phoneNumber = phone;
+                                                                // تمیز کردن شماره
+                                                                String cleanNumber = sanitizePhoneNumberForIran(phone.completeNumber ?? phone.number ?? '');
+
+                                                                // ساخت شیء PhoneNumber جدید
+                                                                phoneNumber = PhoneNumber(
+                                                                  countryCode: phone.countryCode ?? '98',
+                                                                  countryISOCode: phone.countryISOCode ?? 'IR',
+                                                                  number: sanitizePhoneNumberForIran(phone.number),
+                                                                );
                                                               },
                                                               invalidNumberMessage: AppLocalizations.of(
                                                                 context,
                                                               )!.invalidNumber,
                                                               validator: (phone) {
-                                                                if (phone == null || phone.number.isEmpty) {
+                                                                String cleanNumber = sanitizePhoneNumberForIran(phone!.completeNumber);
+
+                                                                // ساخت شیء PhoneNumber جدید
+                                                                phoneNumber = PhoneNumber(
+                                                                  countryCode: phone.countryCode ?? '98',
+                                                                  countryISOCode: phone.countryISOCode ?? 'IR',
+                                                                  number: sanitizePhoneNumberForIran(phone.number),
+                                                                );
+                                                                if (phoneNumber == null || phoneNumber!.number.isEmpty) {
                                                                   return AppLocalizations.of(context)!.requiredNumber;
                                                                 }
           
                                                                 try {
-                                                                  if (!phone.isValidNumber()) {
+                                                                  if (!phoneNumber!.isValidNumber()) {
                                                                     return AppLocalizations.of(context)!.invalidNumber;
                                                                   }
                                                                 } catch (e) {
@@ -430,9 +480,7 @@ class _LoginPageState extends State<LoginPage> {
                                       onPressed: !sendMobile
                                           ? () async{
                                         FocusManager.instance.primaryFocus?.unfocus();
-          
-                                        // final isValidForm = _formKey.currentState?.saveAndValidate() ?? true;
-          
+
                                         if (phoneNumber == null || !phoneNumber!.isValidNumber()) {
                                           Helpify.warn(
                                             context,
@@ -440,9 +488,7 @@ class _LoginPageState extends State<LoginPage> {
                                           );
                                           return;
                                         }
-          
-                                        // if (!isValidForm) return;
-          
+
                                         final mobile = phoneNumber!.completeNumber.replaceFirst('+', '');
           
                                         await context.auth.login({
@@ -457,24 +503,6 @@ class _LoginPageState extends State<LoginPage> {
                                                   sendMobile = true;
                                                 });
                                               }
-                                              // if (_formKey.currentState!.saveAndValidate()) {
-                                                // FocusScope.of(context).requestFocus(FocusNode());
-                                                // setState(() {
-                                                  // mobile = _formKey.currentState?.value.entries
-                                                  //     .firstWhere((element) => element.key == 'mobile')
-                                                  //     .value;
-                                                  // start = DateTime.now().add(Duration(minutes: 3));
-                                                  // sendMobile = true;
-                                                  // userBloc.setMobile(mobile);
-                                                  // userBloc.loginStep1(context,
-                                                  //     method: (){
-                                                  //       start = DateTime.now().add(Duration(minutes: 1));
-                                                  //       sendMobile = true;
-                                                  //     });
-                                                // });
-                                              // } else {
-                                              //   Helpify.warn(context, title: 'فیلدهای الزامی را پر نمایید');
-                                              // }
                                             }
                                           : () async{
                                               if (_code.length == 6) {
